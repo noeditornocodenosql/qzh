@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>翡娅官网</title>
-<link href="css/css.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/css.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.SuperSlide.2.1.1.js"></script>
@@ -18,46 +18,7 @@
 <h1><a href="#">翡娅官网</a></h1>
 </div>
 
-<div class="box">
-
-	<div id="nav-menu">
-		<ul class="menu">
-			<li class="stmenu li1" ><h3><a href="index.html" class="xialaguang"><span>首页</span></a></h3></li>
-			<li class="stmenu">
-				<h3><a href="about.html" class="xialaguang"><span>品牌实力</span></a></h3>    
-				<ul class="children">    
-					<li><h3><a href="#"><span>FEYA简介</span></a></h3></li>
-					<li><h3><a href="#"><span>品牌历程</span></a></h3></li>
-					<li><h3><a href="#"><span>合作媒体</span></a></h3></li>
-					<li><h3><a href="#"><span>卓越团队</span></a></h3></li>
-				</ul>
-			</li>
-			<li class="stmenu">
-				<h3><a href="pro.html" class="xialaguang"><span>全线产品</span></a></h3>    
-				<ul class="children">    
-					<li><h3><a href="#"><span>全线产品</span></a></h3></li>
-					<li><h3><a href="#"><span>微商热销</span></a></h3></li>
-					<li><h3><a href="#"><span>FEYA新品</span></a></h3></li>
-					<li><h3><a href="#"><span>美发知识</span></a></h3></li>
-				</ul>
-			</li>
-			<li class="stmenu">
-				<h3><a href="new.html" class="xialaguang"><span>最新动态</span></a></h3>    
-				<ul class="children">    
-					<li><h3><a href="#"><span>最新动态</span></a></h3></li>
-					<li><h3><a href="#"><span>FEYA公告</span></a></h3></li>
-					
-				</ul>
-			</li>
-			<li class="stmenu">
-				<h3><a href="nyfwcx.html" class="xialaguang"><span>授权查询</span></a></h3>
-			</li>
-			<li class="stmenu"><h3><a href="#" class="xialaguang"><span>防伪查询</span></a></h3></li>
-			<li class="stmenu"><h3><a href="#" class="xialaguang"><span>联系我们</span></a></h3></li>
-		</ul>
-	</div>
-	
-</div>
+<%@include file="common/menu.jsp" %>
 
 <script type="text/javascript">
 $('#nav-menu .menu > li').hover(function(){
@@ -71,8 +32,6 @@ $('#nav-menu .menu > li').hover(function(){
 
 </div>
 </div>
-
-
 
 
 

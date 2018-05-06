@@ -43,12 +43,8 @@ public class NewsController {
 		this.message = message;
 	}
 	
-	@RequestMapping({ "/news" })
-	public String newsIndex() {
-		return "news";
-	}
 	
-	@RequestMapping({ "/newsinfo/{pageNow}" })
+	@RequestMapping({ "/news/{pageNow}" })
 	public ModelAndView newsInfo(@PathVariable Integer pageNow) {
 		ModelAndView mav=new ModelAndView("news");
 		int totalCount = newsService.findAllNewsCounts();
