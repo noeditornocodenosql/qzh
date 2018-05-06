@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.SlideMapper">
+<resultMap type="Slide" id="slideResult">
+		<result property="id" column="id"/>
+		<result property="slideName" column="slideName"/>
+		<result property="myFile" column="myFile"/>
+		<result property="sort" column="sort"/>
+	</resultMap>
+	
+	
+	<select id="findAllSlide"  resultMap="slideResult">
+		select s.id,s.slideName,s.sort from qh_slide s limit 10 
+	</select>
+	
+	<insert id="saveSlide" parameterType="Slide">
+			insert into qh_slide
+			(slideName,myFile,sort) 
+			values
+			(#{slideName},#{myFile},#{sort})
+	</insert>
+	
+	<select id="findSlideById"  parameterType="Integer" resultMap="slideResult">
+		select * from qh_slide where id=#{id}
+	</select>
+	
+	<update id="editSlide" parameterType="Slide">
+		update qh_slide s set s.slideName=#{slideName},s.myFile=#{myFile},s.sort=#{sort} where s.id=#{id} 
+	</update>
+	
+	<delete id="deleteSlide" parameterType="Integer">
+		delete from qh_slide where id=#{id}
+	</delete>
+</mapper>

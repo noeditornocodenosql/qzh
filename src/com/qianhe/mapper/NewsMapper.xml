@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.NewsMapper">
+<resultMap type="News" id="newsthResult">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="type" column="type"/>
+		<result property="time" column="time"/>
+		<result property="imagePath" column="imagePath"/>
+		<result property="count" column="count"/>
+	</resultMap>
+	
+	<select id="findNewsByCategory" parameterType="Integer" resultMap="newsthResult">
+		select * from qh_news  where type=#{0} order by time desc limit #{1},#{2} 
+	</select>
+	
+	<select id="findNewsById" parameterType="Integer" resultMap="newsthResult">
+		select * from qh_news  qhn WHERE qhn.id=#{id}
+	</select>
+	
+	<select id="findAllNews" parameterType="Page" resultMap="newsthResult">
+		select * from qh_news  order by time desc limit #{startPos},#{pageSize}
+	</select> 
+	
+	<select id="findAllNewsCounts" resultType="Integer">
+		select count(*) from qh_news
+	</select>
+	
+	<select id="findMaxNewsId" resultType="Integer">
+		SELECT MAX(qhn.id) FROM qh_news qhn
+	</select>
+	
+	<select id="findNewsCategoryCounts" parameterType="Integer" resultType="Integer">
+		select count(*) from qh_news qhn where qhn.type=#{type}
+	</select>
+	
+	<select id="findAllNewsWithNoPage" resultMap="newsthResult">
+		select * from qh_news
+	</select>
+	
+	<select id="findNewsByType" parameterType="Integer" resultMap="newsthResult">
+		select * from qh_news  where type=#{type}
+	</select>
+	
+	<insert id="saveNews" parameterType="News">
+			insert into qh_news
+			(title,content,type,time,imagePath) 
+			values
+			(#{title},#{content},#{type},#{time},#{imagePath})
+	</insert>
+	
+	<update id="updateNews" parameterType="News">
+		update qh_news  set 
+		title=#{title},
+		content=#{content},
+		type=#{type},
+		time=#{time},
+		imagePath=#{imagePath} 
+		where id=#{id} 
+	</update>
+	
+	<delete id="delNews" parameterType="Integer">
+		delete from qh_news where id=#{id}
+	</delete>
+	
+	<update id="saveCount" parameterType="Health">
+			update  qh_news
+			 set 
+			count = count+1 
+		where id = #{id}
+	</update>
+</mapper>

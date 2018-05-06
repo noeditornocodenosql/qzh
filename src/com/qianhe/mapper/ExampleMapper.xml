@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.ExampleMapper">
+<resultMap type="Example" id="caseResult">
+		<result property="caseId" column="caseId"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="type" column="type"/>
+		<result property="url" column="url"/>
+	</resultMap>
+	
+	<select id="findAllCase" parameterType="Page" resultMap="caseResult">
+			select * from qh_case order by time desc  limit #{startPos},#{pageSize}
+	</select>
+	
+	<select id="findAllCaseCounts" resultType="Integer">
+		select count(*) from qh_case
+	</select>
+	
+	<select id="findCaseById" parameterType="Integer" resultMap="caseResult">
+		select * from qh_case  qhc WHERE qhc.caseId=#{caseId}
+	</select>
+	
+	<select id="getCaseWithNoPage" resultMap="caseResult">
+		select * from qh_case limit 8
+	</select>
+	
+	<select id="findExampleByCategory" parameterType="Integer" resultMap="caseResult">
+		select * from qh_case  where type=#{0} order by time desc limit #{1},#{2} 
+	</select>
+	
+	<select id="findCaseCountsByType" resultType="Integer" parameterType="Integer" >
+		select count(*) from qh_case where type = #{type}
+	</select>
+	
+	<update id="updateExample">
+	    update qh_case set 
+	    title=#{title},
+	    content=#{content},
+	    type=#{type},
+	    url=#{url},
+	    time=#{time} 
+	    where caseId=#{caseId} 
+	</update>
+	
+	<insert id="saveExample" parameterType="Example">
+			insert into qh_case
+			(title,content,type,time,url) 
+			values
+			(#{title},#{content},#{type},#{time},#{url})
+	</insert>
+	
+	<delete id="delExample" parameterType="Integer">
+		delete from qh_case where caseId=#{caseId}
+	</delete>
+
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.TeamMapper">
+<resultMap type="Team" id="teamResult">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="time" column="time"/>
+		<result property="imagePath" column="imagePath"/>
+	</resultMap>
+	
+	<select id="findAllTeam" parameterType="Page" resultMap="teamResult">
+		select * from qh_team  order by time desc limit #{startPos},#{pageSize}
+	</select> 
+	
+	<select id="findAllTeamCounts" resultType="Integer">
+		select count(*) from qh_team
+	</select>
+	
+	<insert id="saveTeam" parameterType="Team">
+			insert into qh_team
+			(title,imagePath,time) 
+			values
+			(#{title},#{imagePath},now())
+	</insert>
+	
+	<select id="findTeamById" parameterType="Integer" resultMap="teamResult">
+		select * from qh_team  a WHERE a.id=#{id}
+	</select>
+	
+	<update id="updateTeam">
+	    update qh_team set 
+	    title = #{title},
+	    imagePath=#{imagePath} 
+	    where id=#{id} 
+	</update>
+	
+	<delete id="delTeam" parameterType="Integer">
+		delete from qh_team where id=#{id}
+	</delete>
+	
+</mapper>

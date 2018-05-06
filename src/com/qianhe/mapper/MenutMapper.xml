@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.MenutMapper">
+<resultMap type="MenuTwo" id="menutResult">
+		<result property="tid" column="mt_id"/>
+		<result property="tname" column="mt_name"/>
+		<result property="ttype" column="mt_type"/>
+	</resultMap>
+	
+	<select id="findMenuTwo" resultMap="menutResult">
+		SELECT * FROM qh_menutwo a WHERE a.mt_type = #{ttype}
+	</select>
+	
+</mapper>

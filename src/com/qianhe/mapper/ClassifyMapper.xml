@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.ClassifyMapper">
+<resultMap type="Classify" id="classifyResult">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="alias" column="alias"/>
+		<result property="describes" column="describes"/>
+		<result property="sort" column="sort"/>
+		<result property="type" column="type"/>
+	</resultMap>
+	
+	<select id="findClassifyById" parameterType="Integer" resultMap="classifyResult">
+		SELECT qhc.id,qhc.name,qhc.alias,qhc.describes,qhc.sort,qhc.type  FROM qh_classify qhc WHERE qhc.id=#{id}
+	</select>
+	
+	<select id="findAllClassify" parameterType="Integer" resultMap="classifyResult">
+		SELECT qhc.id,qhc.name,qhc.alias,qhc.describes,qhc.sort,qhc.type FROM qh_classify qhc  WHERE qhc.type=#{type} order by qhc.sort
+	</select> 
+
+	<update id="updateClassify" parameterType="Classify">
+	    update qh_classify set 
+	    name=#{name},
+	    alias=#{alias},
+	    describes=#{describes},
+	    sort=#{sort},
+	    type=#{type}  
+	    WHERE
+	    id=#{id}
+	</update>
+	
+	<insert id="saveClassify" parameterType="Classify">
+			insert into qh_classify
+			(name,alias,describes,sort,type) 
+			values
+			(#{name},#{alias},#{describes},#{sort},#{type})
+	</insert>
+	
+	<delete id="deleteClassify" parameterType="Integer">
+		delete from qh_classify where id=#{id}
+	</delete>
+</mapper>

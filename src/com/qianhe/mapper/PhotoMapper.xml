@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.PhotoMapper">
+<resultMap type="Photo" id="photoResult">
+		<result property="id" column="id"/>
+		<result property="thumbnailType" column="thumbnailType"/>
+		<result property="thumbnailPath" column="thumbnailPath"/>
+		<result property="imageType" column="imageType"/>
+		<result property="imagePath" column="imagePath"/>
+	</resultMap>
+	
+	<select id="findPhotoByCategory" resultMap="photoResult">
+		SELECT qhp.thumbnailPath,qhp.imagePath FROM qh_photo  qhp WHERE  qhp.thumbnailType=#{0} AND qhp.imageType=#{1}
+	 </select>
+
+</mapper>

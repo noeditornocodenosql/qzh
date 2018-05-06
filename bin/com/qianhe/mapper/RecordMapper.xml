@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.RecordMapper">
+<resultMap type="Record" id="recordResult">
+		<result property="id" column="id"/>
+		<result property="message" column="message"/>
+		<result property="time" column="time"/>
+		<result property="operator" column="operator"/>
+	</resultMap>
+	
+	<select id="findAllRecords"  resultMap="recordResult">
+		select r.id,r.message,r.time,r.operator  from qh_record r  order by r.time desc
+	</select>
+	
+	<insert id="savaRecord" parameterType="Record">
+			insert into qh_record
+			(message,time,operator) 
+			values
+			(#{message},now(),#{operator})
+	</insert>
+	
+	<select id="findAllRecordCounts"   resultType="Integer">
+		select count(*) from qh_record
+	</select>
+	
+</mapper>

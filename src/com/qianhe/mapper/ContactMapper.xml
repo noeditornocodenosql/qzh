@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.ContactMapper">
+<resultMap type="Contact" id="contactResult">
+		<result property="id" column="id"/>
+		<result property="address" column="address"/>
+		<result property="telephone" column="telephone"/>
+		<result property="mobile" column="mobile"/>
+		<result property="qq" column="qq"/>
+		<result property="email" column="email"/>
+		<result property="wechat" column="wechat"/>
+		<result property="keyword" column="keyword"/>
+	</resultMap>
+	
+	<select id="getAllContact" resultMap="contactResult">
+			select * from qh_contact
+	 </select>
+	
+	<update id="updateContact" parameterType="Contact">
+		update qh_contact set 
+		address=#{address},  
+		telephone=#{telephone},  
+		mobile=#{mobile},  
+		qq=#{qq},  
+		email=#{email},  
+		keyword=#{keyword} 
+		where id=#{id} 
+	</update>
+</mapper>

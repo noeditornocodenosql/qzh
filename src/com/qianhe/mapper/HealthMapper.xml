@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qianhe.mapper.HealthMapper">
+<resultMap type="Health" id="healthResult">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="note" column="note"/>
+		<result property="type" column="type"/>
+		<result property="productNumber" column="productNumber"/>
+		<result property="productSpecifications" column="productSpecifications"/>
+		<result property="productPrice" column="productPrice"/>
+		<result property="time" column="time"/>
+		<result property="count" column="count"/>
+	</resultMap>
+	
+	<select id="findHealthByCategory" parameterType="Integer" resultMap="healthResult">
+		select * from qh_health  where type=#{0} order by time desc limit #{1},#{2} 
+	</select>
+	
+	<select id="findHealthById" parameterType="Integer" resultMap="healthResult">
+		select * from qh_health  qhh WHERE qhh.id=#{id}
+	</select>
+	
+	<select id="findAllHealth" parameterType="Page" resultMap="healthResult">
+		select * from qh_health  order by time desc limit #{startPos},#{pageSize}
+	</select> 
+	
+	<select id="findAllHealthCounts" resultType="Integer">
+		select count(*) from qh_health
+	</select>
+	
+	<select id="findMaxHealthId" resultType="Integer">
+		SELECT MAX(qhh.id) FROM qh_health qhh
+	</select>
+	
+	<select id="findHealthCategoryCounts" parameterType="Integer" resultType="Integer">
+		select count(*) from qh_health qhh where qhh.type=#{type}
+	</select>
+
+	<update id="updateHealth">
+	    update qh_health set 
+	    title=#{title},
+	    note=#{note},
+	    <if test="editorValue !=null || editorValue != ''">
+	    	content=#{editorValue},
+	    </if>
+	    type=#{type},
+	    productNumber=#{productNumber},
+	    productSpecifications=#{productSpecifications},
+	    productPrice=#{productPrice},
+	    time=#{time},
+	    imagePath=#{imagePath} 
+	    where id=#{id} 
+	</update>
+	
+	<insert id="saveHealth" parameterType="Health">
+		insert into qh_health
+		(title,note,content,type,time,imagePath,productPrice,count) 
+		values
+		(#{title},#{note},#{editorValue},#{type},#{time},#{imagePath},#{productPrice},1)
+	</insert>
+	
+	<delete id="delHealth" parameterType="Integer">
+		delete from qh_health where id=#{id}
+	</delete>
+	
+	<update id="saveCount" parameterType="Health">
+			update  qh_health
+			 set 
+			count = count+1 
+		where id = #{id}
+	</update>
+</mapper>
