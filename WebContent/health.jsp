@@ -9,8 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>翡娅官网</title>
 <link href="${pageContext.request.contextPath}/css/css.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/lrtk.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
 </head>
 
 <body>
@@ -44,19 +43,16 @@ $('#nav-menu .menu > li').hover(function(){
 <h2><p>全线产品</p></h2>
 
 <ul>
-<li><a href="#">全线产品</a></li>
-<li><a href="#">微商热销</a></li>
-<li><a href="#">FEYA新品</a></li>
-<li><a href="#">美发知识</a></li>
-
-
-
+	<li><a href="#">全线产品</a></li>
+	<li><a href="#">微商热销</a></li>
+	<li><a href="#">QIANZHIHE新品</a></li>
+	<li><a href="#">美发知识</a></li>
 </ul>
 
 </div>
 
 <div class="neiyecpr fr">
-<h2><span class="fr">您当前位置：<a href="#">首页</a> > <a href="#">全线产品</a></span><p>全线产品</p></h2>
+<h2><span class="fr">您当前位置：<a href="#">首页</a> > <a href="#">全线产品</a></span><p>QIANZHIHE全线产品</p></h2>
 
 <div class="cpneye">
 <ul>
@@ -64,6 +60,27 @@ $('#nav-menu .menu > li').hover(function(){
 		<li><a href="${pageContext.request.contextPath}/health/detail?id=${health.id}"><img src="${pageContext.request.contextPath}/${health.imagePath }" style="width: 200px;height: 150px;"><br />${health.title }</a></li>
 	</c:forEach>
 </ul>
+			<c:if test="${page.totalCount != 0}">
+			  <div style="float: right;padding-top: 15px;">
+			    	<a href="${pageContext.request.contextPath}/health/1" >首页</a>
+			    <c:if test="${page.pageNow != 1}">
+			 		<a href="${pageContext.request.contextPath}/health/${page.pageNow-1}">上一页</a>
+					<a href="${pageContext.request.contextPath}/health/1" >1</a>
+				  <c:if test="${page.pageNow-1 != 1}">
+					<a href="${pageContext.request.contextPath}/health/${page.pageNow-1}">${page.pageNow-1}</a>
+				  </c:if>
+				</c:if>
+					<a>${page.pageNow}</a>
+				<c:if test="${page.pageNow != page.totalPageCount}">
+				  <c:if test="${page.pageNow+1 != page.totalPageCount}">
+					<a href="${pageContext.request.contextPath}/health/${page.pageNow+1}">${page.pageNow+1}</a>
+				  </c:if>
+					<a href="${pageContext.request.contextPath}/health/${page.totalPageCount}">${page.totalPageCount}</a>
+					<a href="${pageContext.request.contextPath}/health/${page.pageNow+1}" >下一页</a>
+			    </c:if>
+					<a href="${pageContext.request.contextPath}/health/${page.totalPageCount}">末页</a>
+			 </div> 
+			 </c:if>
 </div>
 
 </div>

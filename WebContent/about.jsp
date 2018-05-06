@@ -41,7 +41,7 @@ $('#nav-menu .menu > li').hover(function(){
 <h2><p>品牌实力</p></h2>
 
 <ul>
-<li><a href="#">FEYA简介    </a></li>
+<li><a href="#">QIANZHIHE简介    </a></li>
 <li><a href="#">品牌历程    </a></li>
 <li><a href="#">合作媒体    </a></li>
 <li><a href="#">卓越团队</a></li>
@@ -53,7 +53,7 @@ $('#nav-menu .menu > li').hover(function(){
 </div>
 
 <div class="neiyecpr fr">
-<h2><span class="fr">您当前位置：<a href="#">首页</a> > <a href="#">FEYA简介</a></span><p>FEYA简介</p>
+<h2><span class="fr">您当前位置：<a href="#">首页</a> > <a href="#">简介</a></span><p>QIANZHIHE简介</p>
 </h2>
 <p>　　尚赫集团致力于从事健康、美容产品的研发和健康、美丽事业的推广，打造人类品质生活，形成了成熟、完善的产品研发理念，恪守“撒播美丽·奉献健康”的品牌使命，践行“诚信、稳健、踏实”的经营理念，将企业丰硕成果回馈至全社会，履行社会职责，肩负慈善公益。尚赫集团创造了一个又一个品牌业绩佳话，投资达10亿元人民币，搭建了广阔、坚实的创业平台，与越来越多的人一同追梦、圆梦。
 　　   <p> </p>

@@ -15,7 +15,7 @@
 				</ul>
 			</li>
 			<li class="stmenu">
-				<h3><a href="${pageContext.request.contextPath}/healthinfo/1" class="xialaguang"><span>全线产品</span></a></h3>    
+				<h3><a href="${pageContext.request.contextPath}/health/1" class="xialaguang"><span>全线产品</span></a></h3>    
 				<ul class="children">    
 					<li><h3><a href="#"><span>全线产品</span></a></h3></li>
 					<li><h3><a href="#"><span>微商热销</span></a></h3></li>
@@ -35,7 +35,7 @@
 				<h3><a href="nyfwcx.html" class="xialaguang"><span>授权查询</span></a></h3>
 			</li>
 			<li class="stmenu"><h3><a href="#" class="xialaguang"><span>防伪查询</span></a></h3></li>
-			<li class="stmenu"><h3><a href="#" class="xialaguang"><span>联系我们</span></a></h3></li>
+			<li class="stmenu"><h3><a href="${pageContext.request.contextPath}/contact" class="xialaguang"><span>联系我们</span></a></h3></li>
 		</ul>
 	</div>
 	

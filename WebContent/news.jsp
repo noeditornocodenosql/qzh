@@ -44,7 +44,7 @@ $('#nav-menu .menu > li').hover(function(){
 <h2><p>品牌实力</p></h2>
 
 <ul>
-<li><a href="#">FEYA简介    </a></li>
+<li><a href="#">QIANZHIHE简介    </a></li>
 <li><a href="#">品牌历程    </a></li>
 <li><a href="#">合作媒体    </a></li>
 <li><a href="#">卓越团队</a></li>
@@ -56,7 +56,7 @@ $('#nav-menu .menu > li').hover(function(){
 </div>
 
 <div class="neiyecpr fr">
-<h2><span class="fr">您当前位置：<a href="#">首页</a> > <a href="#">FEYA新闻</a></span><p>FEYA新闻</p>
+<h2><span class="fr">您当前位置：<a href="#">首页</a> > <a href="#">新闻</a></span><p>QIANZHIHE新闻</p>
 </h2>
 <div class="news">
 	<ul>
@@ -64,6 +64,28 @@ $('#nav-menu .menu > li').hover(function(){
 			<li><span><fmt:formatDate type="time" value="${news.time }" pattern="yyyy-MM-dd HH:mm:ss" /></span><a href="${pageContext.request.contextPath}/news/detail?id=${news.id}">${news.title }</a></li>
 		</c:forEach>
 	</ul>
+	
+	<c:if test="${page.totalCount != 0}">
+  <div style="float: right;padding-top: 15px;">
+    	<a   href="${pageContext.request.contextPath}/news/1" >首页</a>
+    <c:if test="${page.pageNow != 1}">
+ 		<a href="${pageContext.request.contextPath}/news/${page.pageNow-1}">上一页</a>
+		<a   href="${pageContext.request.contextPath}/news/1" >1</a>
+	  <c:if test="${page.pageNow-1 != 1}">
+		<a href="${pageContext.request.contextPath}/news/${page.pageNow-1}">${page.pageNow-1}</a>
+	  </c:if>
+	</c:if>
+		<a>${page.pageNow}</a>
+	<c:if test="${page.pageNow != page.totalPageCount}">
+	  <c:if test="${page.pageNow+1 != page.totalPageCount}">
+		<a href="${pageContext.request.contextPath}/news/${page.pageNow+1}">${page.pageNow+1}</a>
+	  </c:if>
+		<a href="${pageContext.request.contextPath}/news/${page.totalPageCount}">${page.totalPageCount}</a>
+		<a href="${pageContext.request.contextPath}/news/${page.pageNow+1}" >下一页</a>
+    </c:if>
+		<a href="${pageContext.request.contextPath}/news/${page.totalPageCount}">末页</a>
+ </div> 
+ </c:if>
 </div>
 
 </div>

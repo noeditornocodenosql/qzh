@@ -42,7 +42,7 @@ public class HealthController {
 		this.message = message;
 	}
 	
-	@RequestMapping({ "/healthinfo/{pageNow}" })
+	@RequestMapping({ "/health/{pageNow}" })
 	public ModelAndView healthinfo(@PathVariable Integer pageNow) {
 		ModelAndView mav=new ModelAndView("health");
 		List<Health>healthList=null;
