@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>翡娅官网</title>
+<title>尚赫公司全国总代理</title>
 <link href="${pageContext.request.contextPath}/css/css.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/lrtk.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
