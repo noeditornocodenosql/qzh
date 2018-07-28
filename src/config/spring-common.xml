@@ -13,7 +13,7 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql:///sq_qh"></property>
+		<property name="jdbcUrl" value="jdbc:mysql:///sq_qh?serverTimezone=UTC"></property>
 		<property name="user" value="root"></property>
 		<property name="password" value="root"></property>
 		<property name="minPoolSize" value="10" />
